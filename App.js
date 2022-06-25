@@ -1,39 +1,66 @@
+import 'react-native-gesture-handler';
 import { useState } from 'react';
-import { StyleSheet, View, FlatList, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import GroceryItem from './components/GroceryItem';
-import GroceryInput from './components/GroceryInput';
+import Login from './app/screens/Login';
+import Register from './app/screens/Register';
+import Home from './app/screens/Home';
+import AddGrocery from './app/components/AddGrocery';
+// import GroceryItem from './app/GroceryItem';
+// import GroceryInput from './app/GroceryInput';
+
+const Stack = createStackNavigator();
+const globalScreenOptions = {
+  headerStyle: { backgroundColor: '#076420' },
+  headerTitleStyle: { color: 'white' },
+  headerTintColor: 'white',
+};
 
 export default function App() {
-  const [modalIsVisible, setModalIsVisible] = useState(false);
-  const [groceries, setGroceries] = useState([]);
+  // const [modalIsVisible, setModalIsVisible] = useState(false);
+  // const [groceries, setGroceries] = useState([]);
 
-  function startAddGroceryHandler() {
-    setModalIsVisible(true);
-  }
+  // // display modal when accessing grocery list
+  // function startAddGroceryHandler() {
+  //   setModalIsVisible(true);
+  // }
 
-  function endAddGroceryHandler() {
-    setModalIsVisible(false);
-  }
+  // function endGroceryHandler() {
+  //   setModalIsVisible(false);
+  // }
 
-  function addGroceryHandler(enteredGroceryText) {
-    setGroceries((currentGroceries) => [
-      ...currentGroceries,
-      { text: enteredGroceryText, id: Math.random().toString() },
-    ]);
-    endAddGroceryHandler();
-  }
+  // // add grocery to existing list, close modal after
+  // function addGroceryHandler(enteredGroceryText) {
+  //   setGroceries((currentGroceries) => [
+  //     ...currentGroceries,
+  //     { text: enteredGroceryText, id: Math.random().toString() },
+  //   ]);
+  //   endGroceryHandler();
+  // }
 
-  function deleteGrocery(id) {
-    setGroceries((currentGroceries) => {
-      return currentGroceries.filter((grocery) => grocery.id !== id);
-    });
-  }
+  // // returns list without selected grocery
+  // function deleteGrocery(id) {
+  //   setGroceries((currentGroceries) => {
+  //     return currentGroceries.filter((grocery) => grocery.id !== id);
+  //   });
+  // }
 
   return (
-    <>
+    <NavigationContainer>
       <StatusBar style='light' />
-      <View style={styles.appContainer}>
+      <Stack.Navigator
+        initialRouteName='Home'
+        screenOptions={globalScreenOptions}
+      >
+        <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='Register' component={Register} />
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='AddGrocery' component={AddGrocery} />
+      </Stack.Navigator>
+      {/* <View style={styles.appContainer}>
         <Button
           title='Add New Grocery'
           color='#154117'
@@ -42,7 +69,7 @@ export default function App() {
         <GroceryInput
           visible={modalIsVisible}
           onAddGrocery={addGroceryHandler}
-          onCancel={endAddGroceryHandler}
+          onCancel={endGroceryHandler}
         />
         <View style={styles.groceriesContainer}>
           <FlatList
@@ -61,8 +88,8 @@ export default function App() {
             }}
           />
         </View>
-      </View>
-    </>
+      </View> */}
+    </NavigationContainer>
   );
 }
 

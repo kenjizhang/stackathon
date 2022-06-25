@@ -25,7 +25,7 @@ export default function GroceryInput(props) {
       <View style={styles.inputContainer}>
         <Image
           style={styles.image}
-          source={require('../assets/images/GroceryCart.png')}
+          source={require('../../assets/images/GroceryCart.png')}
         />
         <TextInput
           placeholder='grocery name'
