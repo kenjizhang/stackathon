@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     paddingHorizontal: 16,
-    backgroundColor: '#e6e5d1',
+    backgroundColor: '#dbdbdb',
+    width: '90%',
   },
   groceriesContainer: {
     flex: 5,

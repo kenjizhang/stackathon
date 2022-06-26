@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-export default function GroceryItem(props) {
+export default function StoreItem(props) {
   const [pressed, setPressed] = useState(false);
 
   const isPressed = () => {
@@ -16,16 +16,9 @@ export default function GroceryItem(props) {
   };
 
   return (
-    <View style={styles.groceryItem}>
+    <View style={styles.storeItem}>
       <Pressable style={styles.pressedItem} onPress={isPressed}>
-        <Text
-          style={[
-            { textDecorationLine: pressed ? 'line-through' : 'none' },
-            styles.groceryText,
-          ]}
-        >
-          {props.text}
-        </Text>
+        <Text style={styles.storeText}>{props.text}</Text>
       </Pressable>
       <View style={styles.buttonContainer}>
         <Button
@@ -39,7 +32,7 @@ export default function GroceryItem(props) {
 }
 
 const styles = StyleSheet.create({
-  groceryItem: {
+  storeItem: {
     flex: 1,
     flexDirection: 'row',
     margin: 7,
@@ -49,22 +42,24 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderWidth: 1,
   },
-  groceryText: {
+  storeText: {
     color: 'black',
     fontSize: 18,
   },
-  groceryTextPressed: {
+  storeTextPressed: {
     color: 'black',
     textDecorationLine: 'line-through',
   },
   pressedItem: {
-    // width: '90%',
+    width: '100%',
     justifyContent: 'center',
     flex: 7,
   },
   buttonContainer: {
     justifyContent: 'center',
     flex: 1,
-    height: '90%',
+    // height: '90%',
+    // borderWidth: 2,
+    // borderColor: 'red',
   },
 });

@@ -6,6 +6,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Button,
+  Alert,
 } from 'react-native';
 import { Input, Image } from '@rneui/themed';
 import { auth } from '../../firebase';
@@ -29,7 +30,7 @@ export default function Login({ navigation }) {
     try {
       signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      alert(error.message);
+      Alert.alert(`${error}`, 'wrong email or password', [{ text: 'OK' }]);
     }
   };
 
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#3aa17d',
+    backgroundColor: '#dbdbdb',
   },
   textInput: {
     borderWidth: 1,

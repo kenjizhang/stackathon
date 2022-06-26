@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,23 +6,40 @@ import {
   View,
   ScrollView,
   Button,
+  Alert,
 } from 'react-native';
 import { Avatar } from '@rneui/base';
 import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
 import AddGrocery from '../components/AddGrocery';
+import AddStore from '../components/AddStore';
 
 const Home = ({ navigation }) => {
+  const { currentUser } = auth;
+
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Grocery App',
-      headerStyle: { backgroundColor: '#29659e' },
+      title: !currentUser
+        ? 'List'
+        : currentUser.displayName
+        ? `${currentUser.displayName}'s List`
+        : 'List',
+      headerStyle: { backgroundColor: '#3aa17d' },
       headerTitleStyle: { color: 'white' },
       headerTintStyle: 'black',
       headerBackTitle: 'back',
       headerRight: () => (
         <View style={{ marginRight: 20 }}>
           <Button color='white' title='logout' onPress={logout} />
+        </View>
+      ),
+      headerLeft: () => (
+        <View style={{ marginLeft: 20 }}>
+          <Button
+            color='white'
+            title='profile'
+            onPress={() => navigation.navigate('Profile')}
+          />
         </View>
       ),
     });
@@ -51,6 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 55,
     paddingHorizontal: 16,
-    backgroundColor: '#e6e5d1',
+    backgroundColor: '#dbdbdb',
+    alignItems: 'center',
   },
 });
