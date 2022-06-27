@@ -76,6 +76,7 @@ const Recipes = ({ navigation }) => {
                   <RecipeItem
                     text={obj.item.recipe.label}
                     id={obj.item.recipe.label}
+                    key={obj.item.recipe.label}
                   />
                 </Pressable>
               );

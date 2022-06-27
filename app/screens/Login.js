@@ -8,7 +8,7 @@ import {
   Button,
   Alert,
 } from 'react-native';
-import { Input, Image } from '@rneui/themed';
+import { Input, Image, Icon } from '@rneui/themed';
 import { auth } from '../../firebase';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
@@ -36,6 +36,7 @@ export default function Login({ navigation }) {
 
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.inputContainer}>
+      <Text style={styles.titleText}>welcome 🙂</Text>
       <TextInput
         placeholder='email'
         style={styles.textInput}
@@ -47,6 +48,7 @@ export default function Login({ navigation }) {
         style={styles.textInput}
         onChangeText={(text) => setPassword(text)}
         value={password}
+        secureTextEntry={true}
       />
       <Button title='login' onPress={signIn} />
       <Button
@@ -74,5 +76,9 @@ const styles = StyleSheet.create({
     color: '#082d4f',
     width: '100%',
     padding: 14,
+  },
+  titleText: {
+    marginBottom: 50,
+    fontSize: 20,
   },
 });
