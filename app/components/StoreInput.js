@@ -7,8 +7,6 @@ import {
   Modal,
   Image,
 } from 'react-native';
-import { db } from '../../firebase';
-import { getDoc } from 'firebase/firestore';
 
 export default function StoreInput(props) {
   const [enteredStoreText, setEnteredStoreText] = useState('');
@@ -21,8 +19,6 @@ export default function StoreInput(props) {
     props.onAddStore(enteredStoreText);
     setEnteredStoreText('');
   }
-
-  function createStore() {}
 
   return (
     <Modal visible={props.visible} animationType='slide'>

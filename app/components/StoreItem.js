@@ -9,17 +9,11 @@ import {
 } from 'react-native';
 
 export default function StoreItem(props) {
-  const [pressed, setPressed] = useState(false);
-
-  const isPressed = () => {
-    !pressed ? setPressed(true) : setPressed(false);
-  };
-
   return (
     <View style={styles.storeItem}>
-      <Pressable style={styles.pressedItem} onPress={isPressed}>
+      <View style={styles.pressedItem}>
         <Text style={styles.storeText}>{props.text}</Text>
-      </Pressable>
+      </View>
       <View style={styles.buttonContainer}>
         <Button
           title='X'
@@ -46,10 +40,10 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 18,
   },
-  storeTextPressed: {
-    color: 'black',
-    textDecorationLine: 'line-through',
-  },
+  // storeTextPressed: {
+  //   color: 'black',
+  //   textDecorationLine: 'line-through',
+  // },
   pressedItem: {
     width: '100%',
     justifyContent: 'center',

@@ -9,7 +9,6 @@ import Register from './app/screens/Register';
 import Profile from './app/screens/Profile';
 import Home from './app/screens/Home';
 import AddGrocery from './app/components/AddGrocery';
-import AddStore from './app/components/AddStore';
 
 const Stack = createStackNavigator();
 const globalScreenOptions = {
@@ -30,8 +29,11 @@ export default function App() {
         <Stack.Screen name='Register' component={Register} />
         <Stack.Screen name='Profile' component={Profile} />
         <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='AddStore' component={AddStore} />
-        <Stack.Screen name='AddGrocery' component={AddGrocery} />
+        <Stack.Screen
+          name='AddGrocery'
+          component={AddGrocery}
+          options={({ route }) => ({ title: route.params.name })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
