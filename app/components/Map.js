@@ -23,7 +23,7 @@ export default function Map() {
           console.log(data, details);
         }}
         query={{
-          key: 'AIzaSyA0m3ZZ5Q93sEWFG5JoQf7ahJNlIgsANtk',
+          key: '',
           language: 'en',
           components: 'country:us',
           types: 'store',

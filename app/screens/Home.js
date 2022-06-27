@@ -127,6 +127,11 @@ const Home = ({ navigation }) => {
     <SafeAreaView style={styles.groceryContainer}>
       <View style={styles.appContainer}>
         <Button
+          title='Find Recipes!'
+          color='black'
+          onPress={() => navigation.navigate('Recipes')}
+        />
+        <Button
           title='Add New Store'
           color='#154117'
           onPress={startAddStoreHandler}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
-import GroceryItem from './GroceryItem';
-import GroceryInput from './GroceryInput';
+import GroceryItem from '../components/GroceryItem';
+import GroceryInput from '../components/GroceryInput';
 import { doc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { getDocs, collection, addDoc, deleteDoc } from 'firebase/firestore';
